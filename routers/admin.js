@@ -249,7 +249,7 @@ router.post('/update/quantity', async (req, res) => {
     if(addingQuantity){
         res.status(200).json(`${name} qunatity updated`)
 
-        console.log(`${name} qunatity updated`)
+        console.log(`${name} quantity updated`)
     }
        
     } catch (error) {
