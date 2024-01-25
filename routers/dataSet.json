@@ -1,0 +1,425 @@
+// RECOMMENDED
+
+[
+  {
+    "img": "https://images.dominos.co.in/nextgen-catalog/media/prod/Dominos/menu/10ddf620-ae20-477f-b4b2-9bce1ded021d_BlazingOnionPaprikacartmenu.jpeg",
+    "name": "Blazing Onion & paprika",
+    "description": "Hot & spicy pizza with onion & red paprika",
+    "price": "",
+    "quantity":1,
+    "size": [
+      {"id":1,"name": "Regular", "description": "serves 1", "price": 179},
+      {"id":2,"name": "Medium", "description": "serves 2", "price": 329},
+      {"id":3,"name": "Large", "description": "serves 4", "price": 540}
+    ] 
+  },
+  {
+    "img": "https://images.dominos.co.in/nextgen-catalog/media/prod/Dominos/menu/4d42a594-14be-48d2-ac4a-adcd0034a08f_FierySausagePaprikadef.jpeg",
+    "name": "Fiery Sausage & paprika",
+    "description": "Spiciest non veg pizza with spicy & herby chicken sausage and red papr…",
+    "price": "",
+    "quantity":1,
+    "size": [
+      {"name": "Regular", "description": "serves 1", "price": 200},
+      {"name": "Medium", "description": "serves 2", "price": 359},
+      {"name": "Large", "description": "serves 4", "price": 550}
+    ] 
+  },
+  {
+    "img": "https://images.dominos.co.in/nextgen-catalog/media/prod/Dominos/menu/b3e47f55-8b08-4e2b-af36-0826e2ca734e_Primavera.jpg",
+    "name": "Primavera Gourmet-Pizza",
+    "description": "Gourmet veggie delight with bell pepers and mushrooms",
+    "price": "",
+    "quantity":1,
+    "size": [
+      {"name": "Regular", "description": "serves 1", "price": 190},
+      {"name": "Medium", "description": "serves 2", "price": 349},
+      {"name": "Large", "description": "serves 4", "price": 550}
+    ] 
+  },
+  {
+    "img": "https://images.dominos.co.in/nextgen-catalog/media/prod/Dominos/menu/f91f4a7d-3fd5-4107-aa57-4eed8e12ee6a_SmokedChicken.jpg",
+    "name": "Smoked Chicken Gourmet-pizza",
+    "description": "Indulge in the savory delight of our Smoked Chicken Gourmet Pizza. ",
+    "price": "",
+    "quantity":1,
+    "size": [
+      {"name": "Regular", "description": "serves 1", "price": 179},
+      {"name": "Medium", "description": "serves 2", "price": 329},
+      {"name": "Large", "description": "serves 4", "price": 540}
+    ] 
+  }
+]
+
+// VEG
+
+[
+  {
+    "img": "https://images.dominos.co.in/nextgen-catalog/media/prod/Dominos/menu/10ddf620-ae20-477f-b4b2-9bce1ded021d_BlazingOnionPaprikacartmenu.jpeg",
+    "name": "veg Extravangaza",
+    "description": "Indulge in the savory delight of our corn,tomoto,jalapeno Pizza. ",
+    "price": "",
+    "quantity":1,
+    "size": [
+      {"id":1,"name": "Regular", "description": "serves 1", "price": 179},
+      {"id":2,"name": "Medium", "description": "serves 2", "price": 329},
+      {"id":3,"name": "Large", "description": "serves 4", "price": 540}
+    ] 
+  },
+  {
+    "img": "https://images.dominos.co.in/nextgen-catalog/media/prod/Dominos/menu/4d42a594-14be-48d2-ac4a-adcd0034a08f_FierySausagePaprikadef.jpeg",
+    "name": "FarmHouse",
+    "description": "Hot & spicy pizza with onion & red paprika",
+    "price": "",
+    "quantity":1,
+    "size": [
+      {"name": "Regular", "description": "serves 1", "price": 200},
+      {"name": "Medium", "description": "serves 2", "price": 359},
+      {"name": "Large", "description": "serves 4", "price": 550}
+    ] 
+  },
+  {
+    "img": "https://images.dominos.co.in/nextgen-catalog/media/prod/Dominos/menu/b3e47f55-8b08-4e2b-af36-0826e2ca734e_Primavera.jpg",
+    "name": "Margherita",
+    "description": "Classic delight with 100% real mozzarella cheese",
+    "price": "",
+    "quantity":1,
+    "size": [
+      {"name": "Regular", "description": "serves 1", "price": 190},
+      {"name": "Medium", "description": "serves 2", "price": 349},
+      {"name": "Large", "description": "serves 4", "price": 550}
+    ] 
+  },
+  {
+    "img": "https://images.dominos.co.in/nextgen-catalog/media/prod/Dominos/menu/f91f4a7d-3fd5-4107-aa57-4eed8e12ee6a_SmokedChicken.jpg",
+    "name": "Peppy Paneer",
+    "description": "Gourmet veggie delight with bell pepers and paneer",
+    "price": "",
+    "quantity":1,
+    "size": [
+      {"name": "Regular", "description": "serves 1", "price": 179},
+      {"name": "Medium", "description": "serves 2", "price": 329},
+      {"name": "Large", "description": "serves 4", "price": 540}
+    ] 
+  }
+]  
+  
+<section>
+<h3 className='menu-heading'
+style={{backgroundColor:"red"}} id='non-veg'>Non-Veg</h3>
+<section className='home-menu' >
+{nonVegMenu?.map((data, index) => (
+  <section key={index} className='user-menu'>
+    <img src={data.img} alt={data.name} />
+    <p style={{fontWeight:"bolder"}}>{data.name}</p>
+    <p>{data.description}</p>
+    {console.log()}
+    <p>₹ {data.price} </p>
+    <p>
+      <select onChange={(e) =>  handleSizeChange(nonVegMenu,setNonVegMenu,data._id,e.target.value)}>
+        <option value={""}>Choose one size</option>
+        {data.size.map((sizeData, sizeIndex) => (
+          <option key={sizeIndex} value={`${sizeData.name},${sizeData.price}`}
+          >
+            {sizeData.name} - {sizeData.description} - ₹ {sizeData.price}
+          </option>
+        ))}
+      </select>
+    </p>
+
+    {!itemInCart(data._id)? (
+    
+        <button className='cart-btn' disabled={!data.price} style={{ cursor: data.price ? 'pointer' : 'not-allowed' }}
+  onClick={()=>handleCart(data)} >Add to Cart</button>
+    ) : ( 
+    <button className='quantity-btn' ><FaMinus style={{fontSize:"larger"}}/>&nbsp;1&nbsp;<MdAdd
+  style={{fontSize:"larger"}}
+  /></button> 
+    )} 
+
+  </section>
+))}
+</section>
+</section> 
+ 
+[
+  {
+    "name": "Gourmet Parmesan Bliss",
+    "description": "A golden crust generously coated with aged Parmesan cheese, delivering a rich and nutty flavor.",
+    "quantity": 20,
+    "price": 100
+  },
+  {
+    "name": "Cheddar Explosion Delight",
+    "description": "Bursting with sharp cheddar goodness, this crust adds a bold and tangy kick to every bite.",
+    "quantity": 20,
+    "price": 110
+  },
+  {
+    "name": "Mozzarella Marvel Crust",
+    "description": "A classic choice with a twist - a perfectly baked crust infused with creamy mozzarella, creating a gooey and delightful texture.",
+    "quantity": 20,
+    "price": 99
+  },
+  {
+    "name": "Blue Cheese Elegance Edge",
+    "description": "Elevate your pizza experience with this sophisticated crust, featuring the distinctive taste of blue cheese for a savory and unique touch.",
+    "quantity": 20,
+    "price": 100
+  },
+  {
+    "name": "Havarti Harvest Crust",
+    "description": "Experience the velvety smoothness of Havarti cheese in every bite, as this crust brings a mild and buttery flavor to your pizza.",
+    "quantity": 20,
+    "price": 120
+  }
+]
+
+ 
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+    
+  [{"https://images.dominos.co.in/nextgen-catalog/media/prod/Dominos/menu/10ddf620-ae20-477f-b4b2-9bce1ded021d_BlazingOnionPaprikacartmenu.jpeg"
+  
+  "https://images.dominos.co.in/nextgen-catalog/media/prod/Dominos/menu/4d42a594-14be-48d2-ac4a-adcd0034a08f_FierySausagePaprikadef.jpeg"
+  
+  "https://images.dominos.co.in/nextgen-catalog/media/prod/Dominos/menu/b3e47f55-8b08-4e2b-af36-0826e2ca734e_Primavera.jpg"
+  
+  "https://images.dominos.co.in/nextgen-catalog/media/prod/Dominos/menu/f91f4a7d-3fd5-4107-aa57-4eed8e12ee6a_SmokedChicken.jpg"
+  
+  "https://images.dominos.co.in/nextgen-catalog/media/prod/Dominos/menu/79bc3609-690b-440e-b8be-74694b1f3215_new_margherita_2502.jpg"
+  
+  "https://images.dominos.co.in/nextgen-catalog/media/prod/Dominos/menu/1b892978-f689-4199-90d2-47df4e261235_farmhouse.png"
+  
+  "https://images.dominos.co.in/nextgen-catalog/media/prod/Dominos/menu/f65964c6-de96-475d-a5a9-3f3698d66ee7_new_peppy_paneer.jpg"
+  
+  "https://images.dominos.co.in/nextgen-catalog/media/prod/Dominos/menu/5f8ad75f-22d0-4dfb-80e1-852fe2f1caf9_new_veg_extravaganza.jpg"
+  
+  "https://images.dominos.co.in/nextgen-catalog/media/prod/Dominos/menu/8a9f4cab-4f46-4b71-8e9b-55bba0b96366_new_veggie_paradise.jpg"
+  
+  "https://images.dominos.co.in/nextgen-catalog/media/prod/Dominos/menu/a94524cf-3acc-476a-a3a8-f0209ea9d4b2_new_cheese_n_corn.jpg"
+  
+  "https://images.dominos.co.in/nextgen-catalog/media/prod/Dominos/menu/caa88590-9486-4a8b-be77-36e7403aa301_new_pepper_barbeque_chicken.jpg"
+  
+  "https://images.dominos.co.in/nextgen-catalog/media/prod/Dominos/menu/8ebce413-3275-4162-9471-8cda84290c7a_CMB1375Menu.jpg"
+  
+  "https://images.dominos.co.in/nextgen-catalog/media/prod/Dominos/menu/32e820bc-65d1-4cbe-b688-61a90ff30f6a_Jalapeno&PaprikaBlast.jpg"
+  
+  "https://images.dominos.co.in/nextgen-catalog/media/prod/Dominos/menu/ab6fc042-dae9-4ddd-8165-9851ac93e96c_AlFungi.jpg"
+  
+  "https://images.dominos.co.in/nextgen-catalog/media/prod/Dominos/menu/b3e47f55-8b08-4e2b-af36-0826e2ca734e_Primavera.jpg"
+  
+  "https://images.dominos.co.in/nextgen-catalog/media/prod/Dominos/menu/dfd27c77-dd16-4c79-af06-1b13b654f0b1_5Cheese.jpg"
+  
+  "https://images.dominos.co.in/nextgen-catalog/media/prod/Dominos/menu/f91f4a7d-3fd5-4107-aa57-4eed8e12ee6a_SmokedChicken.jpg"
+  
+  "https://images.dominos.co.in/nextgen-catalog/media/prod/Dominos/menu/03ae216f-4090-4fc5-b41c-a23718f39a16_ChickenPepperoniGourmet.jpg"
+  
+  "https://images.dominos.co.in/nextgen-catalog/media/prod/Dominos/menu/10ddf620-ae20-477f-b4b2-9bce1ded021d_BlazingOnionPaprikacartmenu.jpeg"
+  
+  "https://images.dominos.co.in/nextgen-catalog/media/prod/Dominos/menu/32e820bc-65d1-4cbe-b688-61a90ff30f6a_Jalapeno&PaprikaBlast.jpg"
+  
+  "https://images.dominos.co.in/nextgen-catalog/media/prod/Dominos/menu/4bc08150-9c6e-4247-b437-de587890ae84_BlazingChicken&Paprika.jpg"
+  
+  "https://images.dominos.co.in/nextgen-catalog/media/prod/Dominos/menu/4d42a594-14be-48d2-ac4a-adcd0034a08f_FierySausagePaprikadef.jpeg"
+  
+  "https://images.dominos.co.in/nextgen-catalog/media/prod/Dominos/menu/1b892978-f689-4199-90d2-47df4e261235_farmhouse.png"
+  
+  "https://images.dominos.co.in/nextgen-catalog/media/prod/Dominos/menu/79bc3609-690b-440e-b8be-74694b1f3215_new_margherita_2502.jpg"
+  
+  "https://images.dominos.co.in/nextgen-catalog/media/prod/Dominos/menu/b3e47f55-8b08-4e2b-af36-0826e2ca734e_Primavera.jpg"
+  
+  "https://images.dominos.co.in/nextgen-catalog/media/prod/Dominos/menu/32e820bc-65d1-4cbe-b688-61a90ff30f6a_Jalapeno&PaprikaBlast.jpg"
+  
+  "https://images.dominos.co.in/nextgen-catalog/media/prod/Dominos/menu/f65964c6-de96-475d-a5a9-3f3698d66ee7_new_peppy_paneer.jpg"
+  
+  "https://images.dominos.co.in/nextgen-catalog/media/prod/Dominos/menu/ab6fc042-dae9-4ddd-8165-9851ac93e96c_AlFungi.jpg"
+  
+  "https://images.dominos.co.in/nextgen-catalog/media/prod/Dominos/menu/b761377f-9a50-4717-bf38-80f8355946ab_CornnCheeseParathaPizza.jpg"
+  
+  "https://images.dominos.co.in/nextgen-catalog/media/prod/Dominos/menu/10ddf620-ae20-477f-b4b2-9bce1ded021d_BlazingOnionPaprikacartmenu.jpeg"
+  
+  "https://images.dominos.co.in/nextgen-catalog/media/prod/Dominos/menu/5f8ad75f-22d0-4dfb-80e1-852fe2f1caf9_new_veg_extravaganza.jpg"
+  
+  "https://images.dominos.co.in/nextgen-catalog/media/prod/Dominos/menu/17bc2a18-73f5-49d7-95eb-327091806cd6_IndianTandooriPaneer.jpg"
+  
+  "https://images.dominos.co.in/nextgen-catalog/media/prod/Dominos/menu/dfd27c77-dd16-4c79-af06-1b13b654f0b1_5Cheese.jpg"
+  
+  "https://images.dominos.co.in/nextgen-catalog/media/prod/Dominos/menu/8a9f4cab-4f46-4b71-8e9b-55bba0b96366_new_veggie_paradise.jpg"
+  
+  "https://images.dominos.co.in/nextgen-catalog/media/prod/Dominos/menu/a94524cf-3acc-476a-a3a8-f0209ea9d4b2_new_cheese_n_corn.jpg"
+  
+  "https://images.dominos.co.in/nextgen-catalog/media/prod/Dominos/menu/7f78135a-c94a-4586-b9c2-35e955924e57_The4CheesePizza.jpg"
+  
+  "https://images.dominos.co.in/nextgen-catalog/media/prod/Dominos/menu/09e3f02a-3c27-46b1-b358-68fdd8fbd978_new_mexican_green_wave.jpg"
+  
+  "https://images.dominos.co.in/nextgen-catalog/media/prod/Dominos/menu/ac5bab3f-11f7-4db2-9d7e-ebf8f7c3d3b7_double_cheese_margherita_2502.jpg"
+  
+  "https://images.dominos.co.in/nextgen-catalog/media/prod/Dominos/menu/d9d123bc-2284-4e1c-b908-cca62ec5b2b8_new_fresh_veggie.jpg"
+  
+  "https://images.dominos.co.in/nextgen-catalog/media/prod/Dominos/menu/fb4ccc5f-56d0-4f2b-9cd1-cd24fe2d6770_updated_achari_do_pyaza.jpg"
+  
+  "https://images.dominos.co.in/nextgen-catalog/media/prod/Dominos/menu/b3e47f55-8b08-4e2b-af36-0826e2ca734e_Primavera.jpg"
+  
+  "https://images.dominos.co.in/nextgen-catalog/media/prod/Dominos/menu/ab6fc042-dae9-4ddd-8165-9851ac93e96c_AlFungi.jpg"
+  
+  "https://images.dominos.co.in/nextgen-catalog/media/prod/Dominos/menu/03ae216f-4090-4fc5-b41c-a23718f39a16_ChickenPepperoniGourmet.jpg"
+  
+  "https://images.dominos.co.in/nextgen-catalog/media/prod/Dominos/menu/f91f4a7d-3fd5-4107-aa57-4eed8e12ee6a_SmokedChicken.jpg"
+  
+  "https://images.dominos.co.in/nextgen-catalog/media/prod/Dominos/menu/dfd27c77-dd16-4c79-af06-1b13b654f0b1_5Cheese.jpg"
+  
+  "https://images.dominos.co.in/nextgen-catalog/media/prod/Dominos/menu/caa88590-9486-4a8b-be77-36e7403aa301_new_pepper_barbeque_chicken.jpg"
+  
+  "https://images.dominos.co.in/nextgen-catalog/media/prod/Dominos/menu/97011d39-db6b-4665-a486-73aeb504da23_new_chicken_dominator.jpg"
+  
+  "https://images.dominos.co.in/nextgen-catalog/media/prod/Dominos/menu/f91f4a7d-3fd5-4107-aa57-4eed8e12ee6a_SmokedChicken.jpg"
+  
+  "https://images.dominos.co.in/nextgen-catalog/media/prod/Dominos/menu/4d42a594-14be-48d2-ac4a-adcd0034a08f_FierySausagePaprikadef.jpeg"
+  
+  "https://images.dominos.co.in/nextgen-catalog/media/prod/Dominos/menu/4bc08150-9c6e-4247-b437-de587890ae84_BlazingChicken&Paprika.jpg"
+  
+  "https://images.dominos.co.in/nextgen-catalog/media/prod/Dominos/menu/a2e2cc55-be96-4d21-a6e0-db5677bb61f6_The5ChickenFeastPizza.jpg"
+  
+  "https://images.dominos.co.in/nextgen-catalog/media/prod/Dominos/menu/61e3b07c-3fc4-45d3-a637-6bc89fdc9cd5_ChickenKeemaParathaPizza.jpg"
+  
+  "https://images.dominos.co.in/nextgen-catalog/media/prod/Dominos/menu/03ae216f-4090-4fc5-b41c-a23718f39a16_ChickenPepperoniGourmet.jpg"
+  
+  "https://images.dominos.co.in/nextgen-catalog/media/prod/Dominos/menu/925d19dc-9737-4e96-9d31-3cce09083b13_new_non_veg_supreme.jpg"
+  
+  "https://images.dominos.co.in/nextgen-catalog/media/prod/Dominos/menu/8c83ba68-879e-47aa-911c-4b523844a025_SpicedDoubleChicken.jpg"
+  
+  "https://images.dominos.co.in/nextgen-catalog/media/prod/Dominos/menu/b2fd890f-5889-4934-8586-1dbedb6fb856_new_chicken_golden_delight.jpg"
+  
+  "https://images.dominos.co.in/nextgen-catalog/media/prod/Dominos/menu/b7209ffc-db0f-4c30-9504-b11a11771819_IndianTandooriChickenTikka.jpg"
+  
+  "https://images.dominos.co.in/nextgen-catalog/media/prod/Dominos/menu/b0bdc2e7-8860-4cc7-8029-fe556493076b_new_chicken_fiesta.jpg"
+  
+  "https://images.dominos.co.in/nextgen-catalog/media/prod/Dominos/menu/0e3c85ca-0b64-4c5a-affa-da98b34373e0_PepsiSearch.jpg"
+  
+  "https://images.dominos.co.in/nextgen-catalog/media/prod/Dominos/menu/3c65d01b-9604-416d-93a8-cb1e87d4cea6_7UPBOTTLESearch.jpg"
+  
+  "https://images.dominos.co.in/nextgen-catalog/media/prod/Dominos/menu/e4c76bbc-e928-4008-b5a4-66a84dfd818f_MIRINDABOTTLESearch.jpg"
+  
+  "https://images.dominos.co.in/nextgen-catalog/media/prod/Dominos/menu/32c838f5-89ee-46fa-b7ed-1a10cf7ea22e_BEV0196-10-oct.jpg"
+  
+  "https://images.dominos.co.in/nextgen-catalog/media/prod/Dominos/menu/1b71d976-b810-4c2f-912d-575e5e82e021_pepsiCrosssel.jpg"
+  
+  "https://images.dominos.co.in/nextgen-catalog/media/prod/Dominos/menu/8bc5642a-bf16-46fc-bca0-29a6526973c4_ALPHONSO.jpg"
+  
+  "https://images.dominos.co.in/nextgen-catalog/media/prod/Dominos/menu/0d2071b0-593c-498d-9be9-3d4963eaf863_MIXEDFRUIT.jpg"
+  
+  "https://images.dominos.co.in/nextgen-catalog/media/prod/Dominos/menu/bfbf8cd6-89d5-40c3-9f04-4210c4ee1e08_LiptonBottleSearch.jpg"
+  
+  "https://images.dominos.co.in/nextgen-catalog/media/prod/Dominos/menu/74168237-332e-4a6d-962d-6fc691e16833_BaileyWaterSearch.jpg"
+  
+  "https://images.dominos.co.in/nextgen-catalog/media/prod/Dominos/menu/f4029259-f599-4dcf-a866-4191d3dd5162_cheeseGBmenu.jpg"
+  
+  "https://images.dominos.co.in/nextgen-catalog/media/prod/Dominos/menu/7585793e-581a-4235-8b27-ea426cd24d5c_gbpepsimenu.jpg"
+  
+  "https://images.dominos.co.in/nextgen-catalog/media/prod/Dominos/menu/0d598b3d-643f-405a-b076-5eaa4e7b57da_Garlic_bread.png"
+  
+  "https://images.dominos.co.in/nextgen-catalog/media/prod/Dominos/menu/986652b0-bb8c-4fa9-b495-a46551af7c0c_Stuffed_garlic_Bread.png"
+  
+  "https://images.dominos.co.in/nextgen-catalog/media/prod/Dominos/menu/da9d09be-12b9-4cfc-9474-de8fd0c38013_new_cheesy.png"
+  
+  "https://images.dominos.co.in/nextgen-catalog/media/prod/Dominos/menu/f43a97c4-c8d1-4659-86d9-43f49eac32dc_BRD0030.png"
+  
+  "https://images.dominos.co.in/nextgen-catalog/media/prod/Dominos/menu/bd4a29c0-c5e4-41da-8462-e0066a205dcb_BRD0031.png"
+  
+  "https://images.dominos.co.in/nextgen-catalog/media/prod/Dominos/menu/2f60fc22-7862-41ce-af65-382f0419078e_Taco_Veg.png"
+  
+  "https://images.dominos.co.in/nextgen-catalog/media/prod/Dominos/menu/d3f85102-1a6d-4d76-ae62-237bea1735e6_Taco_Nvg.png"
+  
+  "https://images.dominos.co.in/nextgen-catalog/media/prod/Dominos/menu/92582da5-c5da-4059-afd4-3d688110274b_taco.png"
+  
+  "https://images.dominos.co.in/nextgen-catalog/media/prod/Dominos/menu/73dee9b5-1da8-44c6-8fb6-56a2ab13c9f4_chicken_meatballs_peri_peri_sauce.jpg"
+  
+  "https://images.dominos.co.in/nextgen-catalog/media/prod/Dominos/menu/c640fa0f-ebb3-4743-9e06-f3e7792bd733_Parcel_Veg.jpg"
+  
+  "https://images.dominos.co.in/nextgen-catalog/media/prod/Dominos/menu/22d9636d-6909-476e-a2f6-a4088adf8511_Parcel_Nonveg.jpg"
+  
+  "https://images.dominos.co.in/nextgen-catalog/media/prod/Dominos/menu/4e70da5f-1f3e-45f6-a09b-a3e668bbe12f_Burger_PizzaVeg_423X420_Pixel.png"
+  
+  "https://images.dominos.co.in/nextgen-catalog/media/prod/Dominos/menu/556414be-cefb-4de1-aa04-9be58d1117d6_Burger_PizzaVeg_423X420_Pixel.png"
+  
+  "https://images.dominos.co.in/nextgen-catalog/media/prod/Dominos/menu/893395ad-05c1-4f60-b7d2-42ef97425959_Burger_PizzaNonVeg_nvg.png"
+  
+  "https://images.dominos.co.in/nextgen-catalog/media/prod/Dominos/menu/c192f762-90f5-4550-8185-c1a7ba8f1fa1_chickenwingsmenu.jpg"
+  
+  "https://images.dominos.co.in/nextgen-catalog/media/prod/Dominos/menu/be6b8fb4-1b1d-4502-9368-4e85f874e515_Tomato-ketchup-8gm_Upsell-Cards_450x216.jpg"
+  
+  "https://images.dominos.co.in/nextgen-catalog/media/prod/Dominos/menu/7c7073e9-1102-47aa-b30e-e8281746db38_SID0116_21-jan.png"
+  
+  "https://images.dominos.co.in/nextgen-catalog/media/prod/Dominos/menu/f3e10ae1-1bab-4977-97e0-2b4751da4219_SID0115_20-jan.png"
+  
+  "https://images.dominos.co.in/nextgen-catalog/media/prod/Dominos/menu/fda65c63-073e-4b17-a4df-2b1a7f1b66ae_pizza_mania_golden_corn.png"
+  
+  "https://images.dominos.co.in/nextgen-catalog/media/prod/Dominos/menu/e20d056b-7dc8-43b6-8900-a6d844f391d4_pizza_mania_non-veg_loaded.png"
+  
+  "https://images.dominos.co.in/nextgen-catalog/media/prod/Dominos/menu/7be61228-d76b-46fe-856c-2025a16c3d9c_PaneeronionandcapsicumHome.jpg"
+  
+  "https://images.dominos.co.in/nextgen-catalog/media/prod/Dominos/menu/3230bbf0-6e35-4883-8e3f-1a4c27db34e9_pizza_mania_veg_loaded.png"
+  
+  "https://images.dominos.co.in/nextgen-catalog/media/prod/Dominos/menu/dfc551fc-df81-421a-9ace-b42d8428d756_PaneerandCapsicumHome.jpg"
+  
+  "https://images.dominos.co.in/nextgen-catalog/media/prod/Dominos/menu/5b4431e3-ac01-42f0-8c6c-7f0f1eb808b1_CapsicumandredpaprikaHome.jpg"
+  
+  "https://images.dominos.co.in/nextgen-catalog/media/prod/Dominos/menu/67677789-736f-4430-9283-00586b2f6115_ChickenKeenaandonionmenu.jpg"
+  
+  "https://images.dominos.co.in/nextgen-catalog/media/prod/Dominos/menu/45445a70-8373-4610-8e89-63400a87fc49_PIZ0210.jpg"
+  
+  "https://images.dominos.co.in/nextgen-catalog/media/prod/Dominos/menu/faf9777c-d37b-4029-9a5e-474de2ce568f_pizza_mania_onion.png"
+  
+  "https://images.dominos.co.in/nextgen-catalog/media/prod/Dominos/menu/1119f592-fc44-4419-a5b1-2bda30564cdc_pizza_mania_chicken_sausage.png"
+  
+  "https://images.dominos.co.in/nextgen-catalog/media/prod/Dominos/menu/7ae67d18-7115-4d61-bba3-e44c3025e8f2_pizza_mania_pepper_barbeque_chicken.png"
+  
+  "https://images.dominos.co.in/nextgen-catalog/media/prod/Dominos/menu/8ebce413-3275-4162-9471-8cda84290c7a_CMB1375Menu.jpg"
+  
+  "https://images.dominos.co.in/nextgen-catalog/media/prod/Dominos/menu/b59ef0cf-33a0-4778-9fb7-4bd78b646233_CMB1383Menu.jpg"
+  
+  "https://images.dominos.co.in/nextgen-catalog/media/prod/Dominos/menu/95aba1e0-4e2e-48f4-8031-20bd1c361282_CMB1411Menu.jpg"
+  
+  "https://images.dominos.co.in/nextgen-catalog/media/prod/Dominos/menu/513d53c4-90ac-4875-99b1-5be9c33831f3_CMB1402Menu.jpg"
+  
+  "https://images.dominos.co.in/nextgen-catalog/media/prod/Dominos/menu/c3e8b8d1-a6c4-4310-8f8c-e59d85ad66e4_CMB1386Menu.jpg"
+  
+  "https://images.dominos.co.in/nextgen-catalog/media/prod/Dominos/menu/710b6a8b-4acc-4a1a-8c59-8eb6d224cde5_CMB1380Menu.jpg"
+  
+  "https://images.dominos.co.in/nextgen-catalog/media/prod/Dominos/menu/e0874445-e2d6-456d-aa61-1e529b859f4b_CMB1376Menu.jpg"
+  
+  "https://images.dominos.co.in/nextgen-catalog/media/prod/Dominos/menu/b0317398-cc3f-4813-96ac-6cdb0ae9f79d_CMB1382Menu.jpg"
+  
+  "https://images.dominos.co.in/nextgen-catalog/media/prod/Dominos/menu/79897f8f-be57-4cc6-89c0-9c79e87c79d6_CMB1379Menu.jpg"
+  
+  "https://images.dominos.co.in/nextgen-catalog/media/prod/Dominos/menu/f082105b-c7b9-4d3c-b504-15ac991a6f26_CMB1385Menu.jpg"
+  
+  "https://images.dominos.co.in/nextgen-catalog/media/prod/Dominos/menu/faf9e993-5891-4a21-8c9b-44277b72ea7f_CMB1400Menu.jpg"
+  
+  "https://images.dominos.co.in/nextgen-catalog/media/prod/Dominos/menu/8697c6d1-66c9-428f-80d8-26bcc3a891fc_MealinditandooripaneerMenu.jpg"
+  
+  "https://images.dominos.co.in/nextgen-catalog/media/prod/Dominos/menu/99507ce3-553f-4ab1-87d2-8019e7a49dad_CMB1397.jpg"
+  
+  "https://images.dominos.co.in/nextgen-catalog/media/prod/Dominos/menu/12e68204-001b-4830-a6c3-6b0a829a783f_CMB1398.jpg"
+  
+  "https://images.dominos.co.in/nextgen-catalog/media/prod/Dominos/menu/e8582641-6774-43f4-9183-7b5559043682_CMB1395.jpg"
+  
+  "https://images.dominos.co.in/nextgen-catalog/media/prod/Dominos/menu/f4029259-f599-4dcf-a866-4191d3dd5162_cheeseGBmenu.jpg"
+  
+  "https://images.dominos.co.in/nextgen-catalog/media/prod/Dominos/menu/7585793e-581a-4235-8b27-ea426cd24d5c_gbpepsimenu.jpg"
+  
+  "https://images.dominos.co.in/nextgen-catalog/media/prod/Dominos/menu/ebbb39e5-f200-4901-ac84-9a7801057075_clcpepsicustomize.jpg"
+  
+  "https://images.dominos.co.in/undefined"
+  
+  "https://images.dominos.co.in/nextgen-catalog/media/prod/Dominos/menu/ebbb39e5-f200-4901-ac84-9a7801057075_clcpepsicustomize.jpg"
+  
+  "https://images.dominos.co.in/nextgen-catalog/media/prod/Dominos/menu/8fe79905-774d-4dee-ab7d-3f915a1161bb_CAKE03.jpg","https://images.dominos.co.in/nextgen-catalog/media/prod/Dominos/menu/df4eb645-30c0-469d-b937-895593451583_Choco_Lava.png","https://images.dominos.co.in/nextgen-catalog/media/prod/Dominos/menu/209bc3ff-ea57-406b-bc4e-57256dcf7872_Butterscotch.png"} ]
