@@ -85,7 +85,7 @@ router.post('/forgetpassword', async (req, res) => {
 
         const resetToken = generateResetJWT(existingAdmin._id )
        
-            const resetPasswordLink = `http://localhost:3000/admins/resetpassword/${existingAdmin._id}/${resetToken}`
+            const resetPasswordLink = `https://cheese-factory.netlify.app/admins/resetpassword/${existingAdmin._id}/${resetToken}`
          // SENDING RESET-PASSWORD-LINK TO ADMIN-EMAIL
             let transporter  = nodemailer.createTransport({
                service: "gmail",
@@ -192,7 +192,7 @@ router.post('/updatestatus/menu',async (req,res)=>{
 router.post('/updatestatus/customized',async (req,res)=>{
     try {
         const {newStatus,id } = req.body;
-         
+          console.log(req.body)
         const updatingStatus = await changeCustomizedOrderStatus(id,newStatus);
             
         const updatedOrders = await getCustomizedOrders()
