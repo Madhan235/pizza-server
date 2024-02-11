@@ -46,7 +46,7 @@ router.post('/login', async (req,res)=>{
    try {
     //CHECKING USER EXISTS
     const {email,password} = req.body
-
+  
     const existingAdmin = await findAdmin(email)
     if(!existingAdmin){
           res.status(400).json({err:"Invalid Credentials! Please Signup First"})
